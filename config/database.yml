@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  pool: 5
+  username: atsmucha
+  password: wkdqnwk1
+  # username: postgres
+  postgis_extension: true
+
+
+development:
+  <<: *default
+  adapter: postgis
+  database: grape-test_development
+
+test:
+  <<: *default
+  database: grape-test_test
+
+production:
+  <<: *default
+  database: grape-test_production
+  username: grape-test
+  password: <%= ENV['GRAPE-TEST_DATABASE_PASSWORD'] %>
